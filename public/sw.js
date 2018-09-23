@@ -1,4 +1,4 @@
-const version = "1.0.8";
+const version = "1.0.13";
 const cacheName = `mws-rizalibnu-${version}`;
 
 self.addEventListener('install', event => {
