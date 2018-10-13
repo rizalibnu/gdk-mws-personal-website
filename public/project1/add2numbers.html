@@ -2,6 +2,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>add2numbers</title>
+<link href="/styles/main.css" rel="stylesheet">
 <style>
   @import url('https://fonts.googleapis.com/css?family=Dosis');
 
@@ -229,7 +230,60 @@
   <div class="input">
     <input type="text" class="input-text" readonly />
   </div>
+  <div id="update-dialog" class="dialog">
+    <h3 class="title">Pembaruan PWA Tersedia</h3>
+    <div class="content">
+      <p>
+          Versi baru dari aplikasi web ini tersedia. Muat ulang halaman ini atau klik tombol perbarui di bawah ini.
+      </p>
+    </div>
+    <div class="actions">
+      <button type="button" id="reload" class="button raised">Perbarui Sekarang</button>
+    </div>
+  </div>
+  <div class="modal-overlay"></div>
 </div>
 <script src="add2numbers.js" defer></script>
+<script type="text/javascript">
+  let newWorker;
+  function showUpdateDialog() {
+    const dialog = document.getElementById('update-dialog');
+    dialog.className += " show";
+    const overlay = document.querySelector('.modal-overlay');
+    overlay.className += " show";
+  }
+  // The click event on the pop up notification
+  document.getElementById('reload').addEventListener('click', function(){
+    newWorker.postMessage({ action: 'skipWaiting' });
+  });
+  if('serviceWorker' in navigator && ['localhost:1234'].indexOf(location.host) === -1) {
+  // if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../sw.js').then(reg => {
+      reg.addEventListener('updatefound', () => {
+        // A wild service worker has appeared in reg.installing!
+        newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          // Has network.state changed?
+          switch (newWorker.state) {
+            case 'installed':
+              if (navigator.serviceWorker.controller) {
+                // new update available
+                console.log('service worker : new update available')
+                showUpdateDialog();
+              }
+              // No update available
+              break;
+          }
+        });
+      });
+    });
+    let refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (refreshing) return;
+      window.location.reload();
+      refreshing = true;
+    });
+  }
+</script>
 </body>
 </html>

@@ -1,0 +1,93 @@
+.dialog {
+  visibility: hidden;
+  z-index: 1000;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  right: 0;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
+  margin: auto;
+  padding: 1em;
+  background: white;
+  color: black;
+  border: none;
+  box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+  width: 280px;
+}
+.dialog.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+}
+.dialog .title {
+  padding: 1rem 1rem 0;
+  margin: 0;
+  font-size: 1.2em;
+}
+.dialog .actions {
+  padding: 0 1rem 1rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.dialog .actions > * {
+  margin-right: 8px;
+  height: 36px;
+}
+.dialog .actions > *:first-child {
+  margin-right: 0;
+}
+.dialog .content {
+  padding: 0 1rem 1rem;
+  color: rgba(0,0,0, 0.54);
+}
+.modal-overlay {
+  visibility: hidden;
+  position: fixed;
+  z-index: 999;
+  top: -25%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 125%;
+  width: 100%;
+  background: #000;
+  display: none;
+  will-change: opacity;
+  display: block;
+  opacity: 0.5;
+}
+.modal-overlay.show {
+  visibility: visible;
+}
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
