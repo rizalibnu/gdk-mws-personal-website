@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah">
+    <title>Project 2 - Lokasi Istimewa dengan Mapbox | Muhamad Rizal Ibnu Abdulah GDK MWS Site</title>
+    <meta name="Description" content="Aplikasi web ini merupakan aplikasi peta menggunakan API Mapbox yang menampilkan suatu titik lokasi istimewa.">
 
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
-    <meta itemprop="description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah" />
+    <meta itemprop="name" content="Project 2 - Lokasi Istimewa dengan Mapbox | Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+    <meta itemprop="description" content="Aplikasi web ini merupakan aplikasi peta menggunakan API Mapbox yang menampilkan suatu titik lokasi istimewa." />
     <meta itemprop="image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
   
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@rizalibnuabd" />
-    <meta name="twitter:title" content="Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+    <meta name="twitter:title" content="Project 2 - Lokasi Istimewa dengan Mapbox | Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
     <meta name="twitter:image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
-    <meta name="twitter:description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah" />
+    <meta name="twitter:description" content="Aplikasi web ini merupakan aplikasi peta menggunakan API Mapbox yang menampilkan suatu titik lokasi istimewa." />
   
     <!-- Open Graph data -->
-    <meta property="og:title" content="Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
-    <meta property="og:url" content="https://mws-rizal-ibnu.firebaseapp.com/project2" />
+    <meta property="og:title" content="Project 2 - Lokasi Istimewa dengan Mapbox | Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+    <meta property="og:url" content="https://mws-rizal-ibnu.firebaseapp.com/project1" />
     <meta property="og:image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="400" />
-    <meta property="og:description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah" />
+    <meta property="og:description" content="Aplikasi web ini merupakan aplikasi peta menggunakan API Mapbox yang menampilkan suatu titik lokasi istimewa." />
     <meta property="og:site_name" content="Rizal Ibnu GDK MWS Site" />
 
     <link rel="manifest" href="/manifest.json">
@@ -34,36 +34,166 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="theme-color" content="#3f51b5">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://unpkg.com/" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="style">
+    <link href="/styles/main.css" rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href="/styles/main.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
    crossorigin />
-    <link href="/styles/main.css" rel="stylesheet">
     <style>
-        body { margin:0; padding:0; }
-        #mapid { position:absolute; top:0; bottom:0; width:100%; }
+      .container {
+        display: grid;
+        width: 100%;
+        grid-template-rows: auto auto auto;
+      }
+      .menu {
+        grid-column: 1/1;
+        background: #fff;
+      }
+      .menu > .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .menu .logo {
+        max-width: 230px;
+        padding: 1em;
+        vertical-align: middle;
+      }
+      .content {
+        grid-column: 1/1;
+      }
+      .content > .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+      }
+      .content > .wrapper > .card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .content > .wrapper > .card > .info {
+        padding: 1em;
+        text-align: center;
+      }
+      .content > .wrapper > .card > .info > .picture {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        padding: 1em;
+        margin-top: 1em;
+      }
+      .content > .wrapper > .card > .info > p {
+        font-size: 15px;
+        color: #777;
+      }
+      .content > .wrapper > .card > .map {
+        position: relative;
+        height: 300px;
+      }
+      .footer {
+        grid-column: 1/1;
+        background: #212121;
+        color: #fff;
+      }
+      .footer > .wrapper {
+        text-align: center;
+        padding: 2em 1em 3em;
+        min-height: 100px;
+      }
+      #mapid {
+        position:absolute;
+        top:0;
+        bottom:0;
+        width:100%;
+      }
+      @media only screen and (min-width: 768px) {
+        .menu > .wrapper {
+          justify-content: start;
+        }
+        .menu .logo {
+          max-width: 300px;
+        }
+        .content > .wrapper > .card {
+          flex-direction: row;
+        }
+        .content > .wrapper > .card > .info {
+          flex: 1;
+          order: 1;
+        }
+        .content > .wrapper > .card > .map {
+          flex: 3;
+          order: 2;
+          height: auto;
+        }
+      }
+      @media only screen and (min-width: 1200px) {
+        .content > .wrapper > .card {
+          max-width: 1110px;
+        }
+      }
     </style>
-</head>
-<body>
-
-<div id="mapid"></div>
-<div id="update-dialog" class="dialog">
-    <h3 class="title">Pembaruan PWA Tersedia</h3>
-    <div class="content">
-      <p>
-          Versi baru dari aplikasi web ini tersedia. Muat ulang halaman ini atau klik tombol perbarui di bawah ini.
-      </p>
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu toolbar">
+        <div class="wrapper">
+          <button class="button icon back-button" onclick="window.history.back();">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          </button>
+          <a href="/">
+            <img class="logo" src="images/gdk-logo.png" alt="Google Developer Kejar" />
+          </a>
+        </div>
+      </div>
+      <div class="content">
+        <div class="wrapper" id="contentWrapper">
+          <div class="card">
+            <div class="map">
+              <div id="mapid"></div>
+            </div>
+            <div class="info">
+              <img class="picture" src="/project2/images/monas.jpg" alt="Monas" />
+              <h2 class="name">
+                Monumen Nasional
+              </h2>
+              <p>
+                Monumen Nasional atau yang populer disingkat dengan Monas atau Tugu Monas adalah monumen peringatan setinggi 132 meter (433 kaki) yang didirikan untuk mengenang perlawanan dan perjuangan rakyat Indonesia untuk merebut kemerdekaan dari pemerintahan kolonial Hindia Belanda. Pembangunan monumen ini dimulai pada tanggal 17 Agustus 1961 di bawah perintah presiden Sukarno, dan dibuka untuk umum pada tanggal 12 Juli 1975. Tugu ini dimahkotai lidah api yang dilapisi lembaran emas yang melambangkan semangat perjuangan yang menyala-nyala. Monumen Nasional terletak tepat di tengah Lapangan Medan Merdeka, Jakarta Pusat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="wrapper">
+          <h2>Muhamad Rizal Ibnu Abdulah</h2>
+          <div>Website ini dibuat dengan CSS Grid + Material Design Style (No Framework)</div>
+          Copyright © <span id="copy-year">2018</span> All Rights Reserved
+        </div>
+      </div>
     </div>
-    <div class="actions">
-      <button type="button" id="reload" class="button raised">Perbarui Sekarang</button>
+    <div id="update-dialog" class="dialog">
+      <h3 class="title">Pembaruan PWA Tersedia</h3>
+      <div class="content">
+        <p>
+            Versi baru dari aplikasi web ini tersedia. Muat ulang halaman ini atau klik tombol perbarui di bawah ini.
+        </p>
+      </div>
+      <div class="actions">
+        <button type="button" id="reload" class="button raised">Perbarui Sekarang</button>
+      </div>
     </div>
-  </div>
-<div class="modal-overlay"></div>
-
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+    <div class="modal-overlay"></div>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
-<script type="text/javascript" src="/project2/scripts/map.js" defer></script>
-<script type="text/javascript" src="/register-sw.js" defer></script>
-</body>
+    <script type="text/javascript" src="/project2/scripts/map.js" defer></script>
+    <script type="text/javascript" src="/scripts/main.js" defer></script>
+    <script type="text/javascript" src="/register-sw.js" defer></script>
+  </body>
 </html>
