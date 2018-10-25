@@ -34,26 +34,10 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="theme-color" content="#3f51b5">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload" as="style">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="style">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="/styles/main.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="/styles/main.css" rel="preload" as="style" onload="this.rel='stylesheet'">
     <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;
-        color: #000;
-        margin: 0;
-        background: #eee;
-      }
-      input,
-      textarea,
-      button,
-      select,
-      a {
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-      }
       .container {
         display: grid;
         width: 100%;
@@ -62,7 +46,6 @@
       .menu {
         grid-column: 1/1;
         background: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
       }
       .menu > .wrapper {
         display: grid;
@@ -70,8 +53,9 @@
         justify-content: center;
       }
       .menu .logo {
-        max-width: 300px;
+        max-width: 230px;
         padding: 1em;
+        vertical-align: middle;
       }
       .sidebar {
         grid-column: 1/1;
@@ -104,133 +88,6 @@
         padding: 2em 1em 3em;
         min-height: 100px;
       }
-      .grid {
-        display: grid;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-        background: #fff;
-        border-radius: 2px;
-        box-sizing: border-box;
-        min-height: 200px;
-        margin: 0.8em;
-        overflow: hidden;
-        position: relative;
-      }
-      .card > .title {
-        padding: 1em;
-        grid-row : 1/2;
-        display: flex;
-      }
-      .card > .title.title-background {
-        color: #fff;
-        height: 176px;
-        position: relative;
-      }
-      .card > .title.title-background:before {
-        position: absolute;
-        content: " ";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        z-index: 0;
-        background-color: rgba(0, 0, 0, 0.3);
-      }
-      .card > .title.title-background * {
-        /* hack */
-        position: relative;
-      }
-      .card > .title > .title-text {
-        align-self: flex-end;
-        display: flex;
-        margin: 0;
-      }
-      .card > .supporting-text {
-        grid-row : 2/3;
-        color: rgba(0,0,0,.54);
-        line-height: 18px;
-        overflow: hidden;
-        padding: 1em;
-        width: 90%;
-      }
-      .card > .actions {
-        grid-row : 3/4;
-        line-height: normal;
-        width: 100%;
-        background-color: transparent;
-        padding: 8px;
-        box-sizing: border-box;
-        border-top: 1px solid rgba(0,0,0,.1);
-      }
-      .button {
-        background: 0 0;
-        border: none;
-        border-radius: 2px;
-        color: #000;
-        position: relative;
-        height: 36px;
-        margin: 0;
-        min-width: 64px;
-        padding: 0 16px;
-        display: inline-block;
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0;
-        overflow: hidden;
-        outline: none;
-        cursor: pointer;
-        text-decoration: none;
-        text-align: center;
-        line-height: 36px;
-        vertical-align: middle;
-      }
-      .button.colored {
-        color: #3f51b5;
-      }
-      .button.raised {
-        background: #3f51b5;
-        color: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-      }
-      .button:hover, .button:focus {
-        background-color: rgba(158,158,158,.2);
-      }
-      .button.raised:hover, .button.raised:focus {
-        background-color: #3f51b5;
-        color: #fff;
-      }
-      .button > * {
-        position: relative;
-      }
-      .button span {
-        display: block;
-        padding: 12px 24px;
-        font-size: 1.5em;
-      }
-      .button:before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        display: block;
-        width: 0;
-        padding-top: 0;  
-        border-radius: 100%;
-        background-color: rgba(236, 240, 241, .3);
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-      }
-      .button:active:before {
-        width: 120%;
-        padding-top: 120%;
-        transition: width .2s ease-out, padding-top .2s ease-out;
-      }
       .info {
         width: 100%;
       }
@@ -249,6 +106,9 @@
         }
         .menu {
           grid-column: 1/6;
+        }
+        .menu .logo {
+          max-width: 300px;
         }
         .menu > .wrapper {
           justify-content: start;
@@ -280,7 +140,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="menu">
+      <div class="menu toolbar">
         <div class="wrapper">
           <img class="logo" src="images/gdk-logo.png" alt="Google Developer Kejar" />
         </div>
@@ -324,7 +184,7 @@
             Aplikasi web ini merupakan hasil dari latihan membuat web pribadi di firebase dan tutorial chrome devtools.
           </div>
           <div class="actions">
-            <a class="button colored" href="/project1/add2numbers">
+            <a class="button colored" href="/project1">
               LIHAT APLIKASI WEB
             </a>
           </div>

@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset='utf-8' />
-    <title>Attach a popup to a marker instance</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+    <meta charset="utf-8">
+    <title>Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah">
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+    <meta itemprop="description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah" />
+    <meta itemprop="image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
+  
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@rizalibnuabd" />
+    <meta name="twitter:title" content="Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+    <meta name="twitter:image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
+    <meta name="twitter:description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah" />
+  
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Project 2 - Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+    <meta property="og:url" content="https://mws-rizal-ibnu.firebaseapp.com/project2" />
+    <meta property="og:image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:description" content="Website ini merupakan personal website untuk Google Developer Kejar Mobile Web Specialist 2018 yang dibangun oleh Muhamad Rizal Ibnu Abdulah" />
+    <meta property="og:site_name" content="Rizal Ibnu GDK MWS Site" />
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="theme-color" content="#3f51b5">
+    <link rel="preconnect" href="https://unpkg.com/" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin />
     <link href="/styles/main.css" rel="stylesheet">
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-        #marker {
-            background-image: url('project2/images/monas.jpg');
-            background-size: cover;
-            background-position: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .mapboxgl-popup {
-            max-width: 200px;
-        }
+        #mapid { position:absolute; top:0; bottom:0; width:100%; }
     </style>
 </head>
 <body>
 
-<div id='map'></div>
+<div id="mapid"></div>
 <div id="update-dialog" class="dialog">
     <h3 class="title">Pembaruan PWA Tersedia</h3>
     <div class="content">
@@ -41,35 +60,10 @@
   </div>
 <div class="modal-overlay"></div>
 
-<script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoicml6YWxpYm51IiwiYSI6ImNqbWNqY2plaTAybWcza3F2eXlhcXYxaGsifQ.thchVNvkDhqf-QTYOleK7w';
-
-var monument = [106.829, -6.177];
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/basic-v9',
-    center: monument,
-    zoom: 12
-});
-
-// Add zoom and rotation controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
-
-// create the popup
-var popup = new mapboxgl.Popup({ offset: 25 })
-    .setText('Monumen Nasional');
-
-// create DOM element for the marker
-var el = document.createElement('div');
-el.id = 'marker';
-
-// create the marker
-new mapboxgl.Marker(el)
-    .setLngLat(monument)
-    .setPopup(popup) // sets a popup on this marker
-    .addTo(map);
-
-</script>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+<script type="text/javascript" src="/project2/scripts/map.js" defer></script>
 <script type="text/javascript" src="/register-sw.js" defer></script>
 </body>
 </html>
