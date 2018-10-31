@@ -7,26 +7,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: 'pk.eyJ1Ijoicml6YWxpYm51IiwiYSI6ImNqbWNqY2plaTAybWcza3F2eXlhcXYxaGsifQ.thchVNvkDhqf-QTYOleK7w'
 }).addTo(mymap);
 
-const findLocation = (x, y) => {
-  for (let i = 0; i < places.length; i++) {
-    if (places[i].location[0] === x &&
-      places[i].location[1] === y) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-const showLocation = (e) => {
-  const ix = findLocation(e.latlng.lat, e.latlng.lng);
-  if (ix >= 0) {
-    img.src = places[ix].image;
-    img.alt = places[ix].title;
-    title.innerHTML = places[ix].title;
-    review.innerHTML = places[ix].review;
-  }
-}
-
 (async function () {
   const URL = '/project3/data/data.json';
   try {
@@ -41,19 +21,40 @@ const showLocation = (e) => {
 const img = document.getElementById('image');
 const title = document.getElementById('title');
 const review = document.getElementById('review');
-
 const places = JSON.parse(localStorage.getItem('places'));
+
+const findLocation = (x, y) => {
+  for (let i = 0; i < places.length; i++) {
+    if (places[i].location[0] === x &&
+      places[i].location[1] === y) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+const insertView = (index) => {
+  img.src = places[index].image;
+  img.alt = places[index].title;
+  title.innerHTML = places[index].title;
+  review.innerHTML = places[index].review;
+}
+
+const showLocation = (e) => {
+  const index = findLocation(e.latlng.lat, e.latlng.lng);
+  if (index >= 0) {
+    insertView(index);
+  }
+}
+
 if (places) {
   places.map((p, index) => {
-    var marker = L.marker(p.location).addTo(mymap).bindPopup(p.title);
+    var marker = L.marker(p.location).addTo(mymap).bindPopup(`<b>${p.title}</b><br />${p.shortReview}`);
     marker.on('click', showLocation);
     if (index === 0) {
       marker.openPopup();
     }
   })
   // Init data
-  img.src = places[0].image;
-  img.alt = places[0].title;
-  title.innerHTML = places[0].title;
-  review.innerHTML = places[0].review;
+  insertView(0);
 }

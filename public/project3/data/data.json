@@ -6,7 +6,8 @@
       ],
       "title": "Baturaden",
       "image": "/project3/images/baturaden.jpg",
-      "review": "Baturraden adalah sebuah kecamatan di Kabupaten Banyumas, Provinsi Jawa Tengah, Indonesia. Kecamatan ini berjarak sekitar 7,5 Km dari Kota Purwokerto ke arah utara. Pusat pemerintahannya berada di Desa Rempoah. Kecamatan ini terletak di lereng selatan Gunung Slamet dan merupakan kawasan wisata."
+      "shortReview": "Baturaden merupakan tempat wisata terletak di sebelah selatan lereng Gunung Slamet",
+      "review": "Baturaden merupakan tempat wisata terletak di sebelah selatan lereng Gunung Slamet, Kabupaten Banyumas, Jawa Tengah, kurang lebih 640 meter di atas permukaan laut dan 6 km dari puncak Gunung Slamet, sekitar 14 km dari utara kota Purwokerto. Nama Baturaden diambil dari legenda tentang sepasang kekasih yang bernasib sial, seorang lelaki pelayan (Batur) dan seorang wanita bangsawan (Raden)"
     },
     {
       "location": [
@@ -15,6 +16,7 @@
       ],
       "title": "Gunung Slamet",
       "image": "/project3/images/gunung-slamet.jpg",
+      "shortReview": "Gunung Slamet adalah sebuah gunung berapi kerucut yang terdapat di Pulau Jawa, Indonesia",
       "review": "Gunung Slamet adalah sebuah gunung berapi kerucut yang terdapat di Pulau Jawa, Indonesia. Gunung Slamet terletak di antara 5 kabupaten, yaitu Kabupaten Brebes, Kabupaten Banyumas, Kabupaten Purbalingga, Kabupaten Tegal, dan Kabupaten Pemalang, Provinsi Jawa Tengah."
     },
     {
@@ -24,6 +26,7 @@
       ],
       "title": "Curug Cipendok",
       "image": "/project3/images/curug-cipendok.jpg",
+      "shortReview": "Curug Cipendok adalah air terjun dengan ketinggian 92 meter yang terletak di lereng Gunung Slamet. Curug Cipendok mempunyai daya tarik tersendiri, karena lingkungan masih betul-betul alami.",
       "review": "Curug Cipendok adalah air terjun dengan ketinggian 92 meter yang terletak di lereng Gunung Slamet. Curug Cipendok mempunyai daya tarik tersendiri, karena lingkungan masih betul-betul alami. Kesunyian juga masih sangat terasa, sebab belum banyak pelancong yang datang menikmati keindahan alamnya. Hawa di sekitarnya sejuk dan sepanjang jalan menuju ke sana terdapat area perkebunan. Di sekitar wilayahnya terdapat bumi perkemahan dan sebuah telaga yang bernama Telaga Pucung."
     }
   ]
