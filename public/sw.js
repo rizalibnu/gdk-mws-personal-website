@@ -1,15 +1,9 @@
-const version = "1.0.33";
+const version = "1.0.34";
 const cacheName = `mws-rizalibnu-${version}`;
 
 const urlsToCaches = [
   '/',
   '/index.html',
-  '/project1/add2numbers',
-  '/project1/add2numbers.html',
-  '/project1/add2numbers.js',
-  'https://fonts.googleapis.com/css?family=Dosis',
-  '/project2',
-  '/project2/index.html',
   '/scripts/main.js',
   '/styles/main.css',
   '/images/add2numbers-screenshot.png',
@@ -17,8 +11,20 @@ const urlsToCaches = [
   '/images/gdk-logo.png',
   '/images/mapbox-screenshot.png',
   '/images/profile-picture.jpg',
+  '/project1',
+  '/project1/index.html',
+  '/project1/scripts/add2numbers.js',
+  '/project2',
+  '/project2/index.html',
+  '/project2/scripts/map.js',
   '/project2/images/monas.jpg',
-  '/project2/js/map.js',
+  '/project3',
+  '/project3/index.html',
+  '/project3/scripts/map.js',
+  '/project3/data/data.json',
+  '/project3/images/baturaden.jpg',
+  '/project3/images/curug-cipendok.jpg',
+  '/project3/images/gunung-slamet.jpg',
 ];
 
 self.addEventListener('install', event => {
