@@ -1,4 +1,4 @@
-const version = "1.0.42";
+const version = "1.0.43";
 const cacheName = `mws-rizalibnu-${version}`;
 
 const urlsToCaches = [
