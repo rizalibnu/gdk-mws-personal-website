@@ -216,3 +216,10 @@ const modeMap = () => {
 if (modeMapCheckbox && mapContainer) {
   modeMapCheckbox.onchange = function() {modeMap()};
 }
+
+const restaurantsList = document.getElementById("restaurants-list");
+const filterOptions = document.getElementById("filter-options");
+
+if (restaurantsList && filterOptions) {
+  restaurantsList.style.marginTop = `${filterOptions.clientHeight}px`;
+}

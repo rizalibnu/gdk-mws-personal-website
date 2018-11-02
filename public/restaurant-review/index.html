@@ -199,7 +199,7 @@
       font-weight: bold;
       margin-bottom: 0.5em;
     }
-    .filter-options {
+    #filter-options {
       background: #fff;
       box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
       position: fixed;
@@ -386,7 +386,7 @@
       #restaurants-list > .card {
         width: calc(50% - 30px);
       }
-      .filter-options {
+      #filter-options {
         width: 60%;
       }
       #tab-mode {
@@ -415,7 +415,7 @@
             <div id="map"></div>
           </section>
           <section id="content-container">
-            <div class="filter-options">
+            <div id="filter-options">
               <div class="select-filter">
                 <div class="filter-title">Filter Results</div>
                 <select id="neighborhoods-select" class="select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Select Neighborhoods">
