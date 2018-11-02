@@ -1,4 +1,4 @@
-const version = "1.0.35";
+const version = "1.0.37";
 const cacheName = `mws-rizalibnu-${version}`;
 
 const urlsToCaches = [
@@ -25,6 +25,22 @@ const urlsToCaches = [
   '/project3/images/baturaden.jpg',
   '/project3/images/curug-cipendok.jpg',
   '/project3/images/gunung-slamet.jpg',
+  '/restaurant-review',
+  '/restaurant-review/index.html',
+  '/restaurant-review/css/styles.css',
+  '/restaurant-review/js/dbhelper.js',
+  '/restaurant-review/js/main.js',
+  '/restaurant-review/js/restaurant_info.js',
+  '/restaurant-review/restaurant?id=1',
+  '/restaurant-review/restaurant?id=2',
+  '/restaurant-review/restaurant?id=3',
+  '/restaurant-review/restaurant?id=4',
+  '/restaurant-review/restaurant?id=5',
+  '/restaurant-review/restaurant?id=6',
+  '/restaurant-review/restaurant?id=7',
+  '/restaurant-review/restaurant?id=8',
+  '/restaurant-review/restaurant?id=9',
+  '/restaurant-review/restaurant?id=10',
 ];
 
 self.addEventListener('install', event => {

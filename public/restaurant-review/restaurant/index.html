@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurant Info | Muhamad Rizal Ibnu Abdulah GDK MWS Site</title>
+  <meta name="Description" content="Mobile Web Specialist Restaurant Reviews App Stage 1 Project">
+
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="Restaurant Info | Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+  <meta itemprop="description" content="Mobile Web Specialist Restaurant Reviews App Stage 1 Project" />
+  <meta itemprop="image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@rizalibnuabd" />
+  <meta name="twitter:title" content="Restaurant Info | Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+  <meta name="twitter:image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
+  <meta name="twitter:description" content="Mobile Web Specialist Restaurant Reviews App Stage 1 Project" />
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Restaurant Info | Muhamad Rizal Ibnu Abdulah GDK MWS Site" />
+  <meta property="og:url" content="https://mws-rizal-ibnu.firebaseapp.com/restaurant-review" />
+  <meta property="og:image" content="https://mws-rizal-ibnu.firebaseapp.com/images/profile-picture.jpg" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:description" content="Mobile Web Specialist Restaurant Reviews App Stage 1 Project" />
+  <meta property="og:site_name" content="Rizal Ibnu GDK MWS Site" />
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#3f51b5">
+  <meta name="theme-color" content="#3f51b5">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="style">
+  <link href="/styles/main.css" rel="preload" as="style">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link href="/styles/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin="" />
+  <style>
+        .container {
+          width: 100%;
+        }
+        .menu {
+          background: #fff;
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 9999;
+        }
+        .menu > .wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .menu .logo {
+          max-width: 230px;
+          padding: 1em;
+          vertical-align: middle;
+        }
+        .content {
+          margin-top: 53px;
+        }
+        .footer {
+          width: 100%;
+          background: #212121;
+          color: #fff;
+        }
+        .footer > .wrapper {
+          text-align: center;
+          padding: 2em 1em 3em;
+          min-height: 100px;
+        }
+        h2.name {
+          color: #fff;
+        }
+        #restaurant-img {
+          position: relative;
+          height: 350px;
+        }
+        #restaurant-img > .wrapper {
+          max-width: 1110px;
+          margin: 0 auto;
+          position: relative;
+          height: 100%;
+        }
+        #restaurant-img:before {
+          position: absolute;
+          content: " ";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          z-index: 0;
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+        .hero-info {
+          position: absolute;
+          bottom: 0.5em;
+          left: 0;
+          margin: 0 16px 0;
+          color: #fff;
+        }
+        #restaurant-name {
+          margin: 0.2em 0;
+        }
+        #restaurant-address {
+          margin: 0.2em 0;
+        }
+        #restaurant-cuisine {
+          margin: 0.2em 0;
+          background: green;
+          padding: 5px 10px;
+          border-radius: 5px;
+          display: inline-block;
+        }
+        #breadcrumb {
+          position: absolute;
+          top: 1em;
+          left: 0;
+          margin: 0 16px 0;
+          padding: 0;
+        }
+        #breadcrumb li {
+          display: inline;
+          color: #fff;
+        }
+        #breadcrumb li a {
+          color: #ccc;
+          text-decoration: none;
+        }
+        #breadcrumb li+li:before {
+          padding: 8px;
+          color: #fff;
+          content: "/\00a0";
+        }
+        #restaurant-container {
+          margin: 0 auto;
+          display: grid;
+          max-width: 1110px;
+          grid-template-rows: auto auto;
+        }
+        #restaurant-container > .left-section {
+          grid-column: 1/1;
+          padding: 1em;
+        }
+        #restaurant-container > .right-section {
+          grid-column: 1/1;
+          margin-top: 1em;
+        }
+        #map {
+          height: 200px;
+        }
+        #reviews-list {
+          margin: 0;
+          padding: 0;
+        }
+        #reviews-list li {
+          list-style: none;
+          padding: 1em 0;
+          border-bottom: 1px solid #ccc;
+        }
+        #reviews-list li:first-child {
+          padding-top: 0;
+        }
+        #reviews-list li:last-child {
+          border: 0;
+        }
+        #reviews-list li p {
+          margin: 0 0 10px;
+        }
+        #reviews-list li p:first-child {
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+        #reviews-list li p:last-child {
+          color: #777;
+        }
+        @media only screen and (min-width: 768px) {
+          .menu > .wrapper {
+            justify-content: start;
+          }
+          .menu .logo {
+            max-width: 300px;
+          }
+          .content {
+            margin-top: 60px;
+          }
+          #restaurant-container {
+            grid-template-columns: repeat(4, 1fr);
+          }
+          #restaurant-container > .left-section {
+            grid-column: 1/4;
+          }
+          #restaurant-container > .right-section {
+            grid-column: 4/4;
+            margin-right: 1em;
+          }
+          #map {
+            height: 400px;
+          }
+        }
+  </style>
+</head>
+
+<body class="inside">
+  <div class="container">
+    <!-- Beginning header -->
+    <div class="menu toolbar">
+      <div class="wrapper">
+        <button class="button icon back-button" onclick="window.history.back();">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" /></svg>
+        </button>
+        <a href="/">
+          <img class="logo" src="/images/gdk-logo.png" alt="Google Developer Kejar" />
+        </a>
+      </div>
+    </div>
+    <!-- End header -->
+
+    <div class="content">
+      <div class="wrapper" id="contentWrapper">
+        <main id="maincontent">
+          <section id="hero">
+            <div id="restaurant-img">
+              <div class="wrapper">
+                <div class="hero-info">
+                  <p id="restaurant-cuisine"></p>
+                  <h2 id="restaurant-name"></h2>
+                  <p id="restaurant-address"></p>
+                </div>
+                <ul id="breadcrumb">
+                  <li><a href="/restaurant-review">Home</a></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section id="restaurant-container">
+            <div class="left-section card">
+              <table id="restaurant-hours"></table>
+              <div id="reviews-container">
+                <ul id="reviews-list"></ul>
+              </div>
+            </div>
+            <div class="right-section">
+              <div id="map-container">
+                <div id="map"></div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Beginning footer -->
+    <div class="footer">
+      <div class="wrapper">
+        <h2>Muhamad Rizal Ibnu Abdulah</h2>
+        <div>Website ini dibuat dengan CSS Grid + Material Design Style (No Framework)</div>
+        Copyright © <span id="copy-year">2018</span> All Rights Reserved
+      </div>
+    </div>
+    <!-- End footer -->
+  </div>
+  <div id="update-dialog" class="dialog">
+    <h3 class="title">Pembaruan PWA Tersedia</h3>
+    <div class="content">
+      <p>
+        Versi baru dari aplikasi web ini tersedia. Muat ulang halaman ini atau klik tombol perbarui di bawah ini.
+      </p>
+    </div>
+    <div class="actions">
+      <button type="button" id="reload" class="button raised">Perbarui Sekarang</button>
+    </div>
+  </div>
+  <div class="modal-overlay"></div>
+  <script type="text/javascript" src="/scripts/main.js" defer></script>
+  <script type="text/javascript" src="/register-sw.js" defer></script>
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+    crossorigin="" defer></script>
+  <script type="application/javascript" charset="utf-8" src="/restaurant-review/js/dbhelper.js" defer></script>
+  <script type="application/javascript" charset="utf-8" src="/restaurant-review/js/restaurant_info.js" defer></script>
+
+</body>
+
+</html>
